@@ -1,6 +1,7 @@
 package chapter4
 
-func findTheCircleInListNode(l *ListNode) *ListNode {
+// detectCircleInListNode will return a node in circle, else will return nil.
+func detectCircleInListNode(l *ListNode) *ListNode {
 	// Guard logic, in case of the empty or single list node.
 	if l == nil || l.next == nil {
 		return nil
@@ -31,4 +32,22 @@ func findTheCircleInListNode(l *ListNode) *ListNode {
 	}
 
 	return slow
+}
+
+// findStartNodeInCircle will return a start node of a circle in list node.
+func findStartNodeInCircle(l *ListNode) *ListNode {
+	n := detectCircleInListNode(l)
+	if n == nil {
+		return nil
+	}
+
+	s := l
+	for {
+		if s == n {
+			return s
+		}
+
+		s = s.next
+		n = n.next
+	}
 }

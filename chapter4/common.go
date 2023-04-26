@@ -18,6 +18,33 @@ func New(nodes ...int) *ListNode {
 	return l
 }
 
+func NewCircleNode(start int, nodes ...int) (*ListNode, *ListNode) {
+	var l, curr, s *ListNode
+
+	for i, node := range nodes {
+		if i == 0 {
+			l = &ListNode{value: node}
+			curr = l
+			if node == start {
+				s = l
+			}
+			continue
+		}
+
+		curr.next = &ListNode{value: node}
+		curr = curr.next
+		if start == node {
+			s = curr
+		}
+	}
+
+	if s != nil {
+		curr.next = s
+	}
+
+	return l, s
+}
+
 func appendNode(l *ListNode, value int) *ListNode {
 	if l == nil {
 		return &ListNode{value: value}
