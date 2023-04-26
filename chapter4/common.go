@@ -45,6 +45,38 @@ func NewCircleNode(start int, nodes ...int) (*ListNode, *ListNode) {
 	return l, s
 }
 
+func NewJoinNode(f, s, c []int) (*ListNode, *ListNode, *ListNode) {
+	cc := New(c...)
+	var fn, sn, cf, cs *ListNode
+
+	for _, n := range f {
+		if fn == nil {
+			fn = &ListNode{value: n}
+			cf = fn
+			continue
+		}
+
+		cf.next = &ListNode{value: n}
+		cf = cf.next
+	}
+
+	for _, n := range s {
+		if sn == nil {
+			sn = &ListNode{value: n}
+			cs = sn
+			continue
+		}
+
+		cs.next = &ListNode{value: n}
+		cs = cs.next
+	}
+
+	cf.next = cc
+	cs.next = cc
+
+	return fn, sn, cc
+}
+
 func appendNode(l *ListNode, value int) *ListNode {
 	if l == nil {
 		return &ListNode{value: value}
