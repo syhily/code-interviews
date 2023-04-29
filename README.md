@@ -48,7 +48,7 @@ You can clone this project and running all the tests locally.
   - [x] [Question 34](chapter05/question34.go)
   - [x] [Question 35](chapter05/question35.go)
 - [ ] [Chapter 06](chapter06/)
-  - [ ] [Question 36](chapter06/question36.go)
+  - [x] [Question 36](chapter06/question36.go)
   - [ ] [Question 37](chapter06/question37.go)
   - [ ] [Question 38](chapter06/question38.go)
   - [ ] [Question 39](chapter06/question39.go)
