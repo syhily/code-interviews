@@ -80,7 +80,7 @@ You can clone this project and running all the tests locally.
 <details open>
 <summary>Chapter 07 (WIP)</summary>
 
-- [ ] [Question 41](chapter07/question41.go)
+- [x] [Question 41](chapter07/question41.go)
 - [ ] [Question 42](chapter07/question42.go)
 - [ ] [Question 43](chapter07/question43.go)
 - [ ] [Question 44](chapter07/question44.go)
