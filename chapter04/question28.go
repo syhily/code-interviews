@@ -12,9 +12,9 @@ func flattenNode(node *Node) *Node {
 	return n
 }
 
-func innerFlattenNode(node *Node) (*Node, *Node) {
+func innerFlattenNode(node *Node) (next *Node, end *Node) {
 	iter, start := node, &Node{}
-	end := start
+	end = start
 
 	for iter != nil {
 		end.next = iter
@@ -35,7 +35,7 @@ func innerFlattenNode(node *Node) (*Node, *Node) {
 		iter = iter.next
 	}
 
-	next := start.next
+	next = start.next
 	next.prev = nil
 
 	return next, end

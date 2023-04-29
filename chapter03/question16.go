@@ -10,7 +10,7 @@ func lengthOfTheLongestSubString(s string) int {
 		counts[runes[end]]++
 		for counts[runes[end]] > 1 {
 			counts[runes[start]]--
-			start = start + 1
+			start++
 		}
 
 		curr := end - start + 1

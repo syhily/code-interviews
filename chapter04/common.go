@@ -18,8 +18,8 @@ func New(nodes ...int) *ListNode {
 	return l
 }
 
-func NewCircleNode(start int, nodes ...int) (*ListNode, *ListNode) {
-	var l, curr, s *ListNode
+func NewCircleNode(start int, nodes ...int) (l *ListNode, s *ListNode) {
+	var curr *ListNode
 
 	for i, node := range nodes {
 		if i == 0 {
@@ -42,12 +42,12 @@ func NewCircleNode(start int, nodes ...int) (*ListNode, *ListNode) {
 		curr.next = s
 	}
 
-	return l, s
+	return
 }
 
-func NewJoinNode(f, s, c []int) (*ListNode, *ListNode, *ListNode) {
-	cc := New(c...)
-	var fn, sn, cf, cs *ListNode
+func NewJoinNode(f, s, c []int) (fn *ListNode, sn *ListNode, cc *ListNode) {
+	cc = New(c...)
+	var cf, cs *ListNode
 
 	for _, n := range f {
 		if fn == nil {
@@ -74,7 +74,7 @@ func NewJoinNode(f, s, c []int) (*ListNode, *ListNode, *ListNode) {
 	cf.next = cc
 	cs.next = cc
 
-	return fn, sn, cc
+	return
 }
 
 func appendNode(l *ListNode, value int) *ListNode {
@@ -105,7 +105,7 @@ func dummyAppendNode(l *ListNode, value int) *ListNode {
 
 func deleteNode(l *ListNode, value int) *ListNode {
 	if l == nil {
-		return l
+		return nil
 	}
 
 	if l.value == value {

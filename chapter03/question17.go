@@ -2,15 +2,15 @@ package chapter03
 
 func findTheShortestSubstring(s, t string) string {
 	// Count all the runes in t.
-	runes1, runes2, counts := []rune(t), []rune(s), make(map[rune]int)
-	for _, r := range runes1 {
+	counts := make(map[rune]int)
+	for _, r := range t {
 		counts[r]++
 	}
 
 	// Find the min start and length.
 	short, length, start, end := 0, 0, 0, 0
 	for start < len(s) {
-		r := runes2[start]
+		r := rune(s[start])
 		if _, ok := counts[r]; !ok {
 			start++
 			continue
@@ -21,7 +21,7 @@ func findTheShortestSubstring(s, t string) string {
 		}
 
 		for end < len(s) {
-			r2 := runes2[end]
+			r2 := rune(s[end])
 			if c, ok := counts[r2]; ok {
 				counts[r2] = c - 1
 			}
@@ -40,7 +40,7 @@ func findTheShortestSubstring(s, t string) string {
 		start++
 	}
 
-	return string(runes2[short : short+length])
+	return s[short : short+length]
 }
 
 func allValueIsBelowZero(counts map[rune]int) bool {

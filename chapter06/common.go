@@ -6,11 +6,6 @@ import (
 
 var ErrNoElementInStack = fmt.Errorf("there is no elements in the stack")
 
-type Entry[V comparable] struct {
-	value V
-	next  *Entry[V]
-}
-
 // Stack is a common interface for representing the FILO data structure.
 type Stack[V comparable] interface {
 	push(v V)
@@ -20,8 +15,13 @@ type Stack[V comparable] interface {
 	size() int
 }
 
+type entry[V comparable] struct {
+	value V
+	next  *entry[V]
+}
+
 type stack[V comparable] struct {
-	entry  *Entry[V]
+	entry  *entry[V]
 	counts int
 }
 
@@ -35,9 +35,9 @@ func (s *stack[V]) size() int {
 
 func (s *stack[V]) push(v V) {
 	if s.entry == nil {
-		s.entry = &Entry[V]{value: v}
+		s.entry = &entry[V]{value: v}
 	} else {
-		e := &Entry[V]{value: v}
+		e := &entry[V]{value: v}
 		e.next = s.entry
 		s.entry = e
 	}

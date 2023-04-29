@@ -4,17 +4,16 @@ func findAllStartIndexOfInclusionWords(s1, s2 string) []int {
 	var res []int
 
 	// Count all the runes in s2.
-	counts := make(map[rune]int, 26)
-	for _, r := range []rune(s2) {
-		counts[r]++
+	counts := make([]int, 26)
+	for _, r := range s2 {
+		counts[r-'a']++
 	}
 
-	runes := []rune(s1)
 	l := len(s2)
-	for i, r := range runes {
-		counts[r]--
+	for i, r := range s1 {
+		counts[r-'a']--
 		if i >= l {
-			counts[runes[i-l]]++
+			counts[s1[i-l]-'a']++
 		}
 
 		if i >= l-1 && allValueIsZero(counts) {

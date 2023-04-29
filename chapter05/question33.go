@@ -24,11 +24,7 @@ func groupingAnagrams(s ...string) [][]string {
 
 	var res [][]string
 	for _, s := range grouping {
-		var g []string
-		for _, d := range s {
-			g = append(g, d)
-		}
-		res = append(res, g)
+		res = append(res, s)
 	}
 	return res
 }

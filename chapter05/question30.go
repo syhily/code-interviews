@@ -1,6 +1,9 @@
 package chapter05
 
-import "math/rand"
+import (
+	"crypto/rand"
+	"math/big"
+)
 
 type RandomSet interface {
 	insert(value int) bool
@@ -39,6 +42,6 @@ func (r *randomSet) remove(value int) bool {
 }
 
 func (r *randomSet) getRandom() int {
-	i := rand.Intn(len(r.values))
-	return r.values[i]
+	random, _ := rand.Int(rand.Reader, big.NewInt(int64(len(r.values))))
+	return r.values[random.Int64()]
 }
