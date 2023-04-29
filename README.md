@@ -67,18 +67,18 @@ You can clone this project and running all the tests locally.
 - [x] [Question 35](chapter05/question35.go)
 </details>
 
-<details open>
-<summary>Chapter 06 (WIP)</summary>
+<details>
+<summary><del>Chapter 06</del></summary>
 
 - [x] [Question 36](chapter06/question36.go)
 - [x] [Question 37](chapter06/question37.go)
 - [x] [Question 38](chapter06/question38.go)
 - [x] [Question 39](chapter06/question39.go)
-- [ ] [Question 40](chapter06/question40.go)
+- [x] [Question 40](chapter06/question40.go)
 </details>
 
-<details>
-<summary>Chapter 07</summary>
+<details open>
+<summary>Chapter 07 (WIP)</summary>
 
 - [ ] [Question 41](chapter07/question41.go)
 - [ ] [Question 42](chapter07/question42.go)
