@@ -13,4 +13,4 @@ repos:
       - id: my-cmd
         name: goimports
         alias: goimports
-        args: [ scripts/goimports.sh, github.com/syhily/code_interviews ]
+        args: [ scripts/goimports.sh, github.com/syhily/code-interviews ]

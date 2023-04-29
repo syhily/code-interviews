@@ -25,7 +25,7 @@ linters-settings:
   gocyclo:
     min-complexity: 15
   goimports:
-    local-prefixes: github.com/syhily/code_interviews
+    local-prefixes: github.com/syhily/code-interviews
   lll:
     line-length: 120
   misspell:
