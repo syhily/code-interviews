@@ -1,28 +1,26 @@
 package chapter06
 
-import "github.com/syhily/code-interviews/common"
-
-func largestRectangleArea(heights []int) int {
+func dailyTemperatures(temperatures ...int) []int {
 	s := newStack[int]()
-	s.push(-1)
+	res := make([]int, len(temperatures))
 
-	max := 0
+	for i, temperature := range temperatures {
+		if s.empty() {
+			s.push(i)
+			continue
+		}
 
-	for i, h := range heights {
-		for s.peek() != -1 && heights[s.peek()] >= h {
-			height := heights[s.pop()]
-			width := i - s.peek() - 1
-			max = common.MaxNumber(max, width*height)
+		for !s.empty() && temperatures[s.peek()] < temperature {
+			idx := s.pop()
+			res[idx] = i - idx
 		}
 
 		s.push(i)
 	}
 
-	for s.peek() != -1 {
-		height := heights[s.pop()]
-		width := len(heights) - s.peek() - 1
-		max = common.MaxNumber(max, width*height)
+	for !s.empty() {
+		res[s.pop()] = 0
 	}
 
-	return max
+	return res
 }

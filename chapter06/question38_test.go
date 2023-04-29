@@ -1,26 +1,29 @@
 package chapter06
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
-func Test_largestRectangleArea(t *testing.T) {
+func Test_dailyTemperatures(t *testing.T) {
 	type args struct {
-		heights []int
+		temperatures []int
 	}
 	tests := []struct {
 		name string
 		args args
-		want int
+		want []int
 	}{
 		{
-			name: "Testing for 3, 2, 5, 4, 6, 1, 4, 2",
-			args: args{heights: []int{3, 2, 5, 4, 6, 1, 4, 2}},
-			want: 12,
+			name: "calculate temperature: 35, 31, 33, 36, 34",
+			args: args{temperatures: []int{35, 31, 33, 36, 34}},
+			want: []int{3, 1, 1, 0, 0},
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := largestRectangleArea(tt.args.heights); got != tt.want {
-				t.Errorf("largestRectangleArea() = %v, want %v", got, tt.want)
+			if got := dailyTemperatures(tt.args.temperatures...); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("dailyTemperatures() = %v, want %v", got, tt.want)
 			}
 		})
 	}
