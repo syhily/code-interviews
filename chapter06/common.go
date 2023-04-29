@@ -14,8 +14,8 @@ type Entry[V comparable] struct {
 // Stack is a common interface for representing the FILO data structure.
 type Stack[V comparable] interface {
 	push(v V)
-	pop() (V, error)
-	peek() (V, error)
+	pop() V
+	peek() V
 }
 
 type stack[V comparable] struct {
@@ -32,22 +32,22 @@ func (s *stack[V]) push(v V) {
 	}
 }
 
-func (s *stack[V]) pop() (V, error) {
+func (s *stack[V]) pop() V {
 	if s.entry == nil {
-		return Entry[V]{}.value, ErrNoElementInStack
+		panic(ErrNoElementInStack)
 	}
 	e := s.entry
 	s.entry = e.next
 
-	return e.value, nil
+	return e.value
 }
 
-func (s *stack[V]) peek() (V, error) {
+func (s *stack[V]) peek() V {
 	if s.entry == nil {
-		return Entry[V]{}.value, ErrNoElementInStack
+		panic(ErrNoElementInStack)
 	}
 
-	return s.entry.value, nil
+	return s.entry.value
 }
 
 func newStack[V comparable]() Stack[V] {
