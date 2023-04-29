@@ -16,10 +16,21 @@ type Stack[V comparable] interface {
 	push(v V)
 	pop() V
 	peek() V
+	empty() bool
+	size() int
 }
 
 type stack[V comparable] struct {
-	entry *Entry[V]
+	entry  *Entry[V]
+	counts int
+}
+
+func (s *stack[V]) empty() bool {
+	return s.entry == nil
+}
+
+func (s *stack[V]) size() int {
+	return s.counts
 }
 
 func (s *stack[V]) push(v V) {
@@ -30,6 +41,7 @@ func (s *stack[V]) push(v V) {
 		e.next = s.entry
 		s.entry = e
 	}
+	s.counts++
 }
 
 func (s *stack[V]) pop() V {
@@ -38,6 +50,7 @@ func (s *stack[V]) pop() V {
 	}
 	e := s.entry
 	s.entry = e.next
+	s.counts--
 
 	return e.value
 }
