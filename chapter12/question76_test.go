@@ -28,3 +28,31 @@ func Test_quickSort(t *testing.T) {
 		})
 	}
 }
+
+func Test_findTheKth(t *testing.T) {
+	type args struct {
+		k       int
+		numbers []int
+	}
+	tests := []struct {
+		name string
+		args args
+		want int
+	}{
+		{
+			name: "find the kth number",
+			args: args{
+				k:       3,
+				numbers: []int{3, 1, 2, 4, 5, 5, 6},
+			},
+			want: 5,
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := findTheKth(tt.args.k, tt.args.numbers...); got != tt.want {
+				t.Errorf("findTheKth() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
