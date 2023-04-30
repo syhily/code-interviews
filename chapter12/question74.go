@@ -6,11 +6,8 @@ func mergeIntervals(intervals ...[]int) [][]int {
 	// Bubble sort the intervals
 	for i := range intervals {
 		for j := 0; j < len(intervals)-i-1; j++ {
-			l := intervals[j]
-			r := intervals[j+1]
-
-			if l[0] > r[0] {
-				intervals[j], intervals[j+1] = r, l
+			if intervals[j][0] > intervals[j+1][0] {
+				intervals[j], intervals[j+1] = intervals[j+1], intervals[j]
 			}
 		}
 	}
@@ -23,8 +20,7 @@ func mergeIntervals(intervals ...[]int) [][]int {
 			continue
 		}
 
-		l := len(res) - 1
-		tail := res[l]
+		tail := res[len(res)-1]
 
 		if interval[0] <= tail[1] {
 			tail[1] = common.MaxNumber(tail[1], interval[1])
