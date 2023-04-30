@@ -25,12 +25,12 @@ func Test_twoSumInArray(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			gotL, gotR := twoSumInArray(tt.args.sum, tt.args.arrays...)
+			gotL, gotR := twoSum(tt.args.sum, tt.args.arrays...)
 			if gotL != tt.wantL {
-				t.Errorf("twoSumInArray() gotL = %v, want %v", gotL, tt.wantL)
+				t.Errorf("twoSum() gotL = %v, want %v", gotL, tt.wantL)
 			}
 			if gotR != tt.wantR {
-				t.Errorf("twoSumInArray() gotR = %v, want %v", gotR, tt.wantR)
+				t.Errorf("twoSum() gotR = %v, want %v", gotR, tt.wantR)
 			}
 		})
 	}

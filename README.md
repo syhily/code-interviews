@@ -138,7 +138,7 @@ You can clone this project and running all the tests locally.
 <details>
 <summary>Chapter 12</summary>
 
-- [ ] [Question 74](chapter12/question74.go)
+- [x] [Question 74](chapter12/question74.go)
 - [ ] [Question 75](chapter12/question75.go)
 - [ ] [Question 76](chapter12/question76.go)
 - [ ] [Question 77](chapter12/question77.go)

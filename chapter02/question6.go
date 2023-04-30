@@ -1,6 +1,6 @@
 package chapter02
 
-func twoSumInArray(sum int, arrays ...int) (l int, r int) {
+func twoSum(sum int, arrays ...int) (l int, r int) {
 	l, r = 0, len(arrays)-1
 
 	for l < r {
