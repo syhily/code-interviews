@@ -29,24 +29,17 @@ func countingSort(numbers ...int) []int {
 }
 
 func sortByGivenIndex(arr1, arr2 []int) []int {
-	// Find the min and max value from arr1.
-	max, min := math.MinInt, math.MaxInt
-	for _, i := range arr1 {
-		max = common.MaxNumber(max, i)
-		min = common.MinNumber(min, i)
-	}
-
 	// Count the occur times of items in arr1.
-	counts := make([]int, max-min+1)
+	counts := make([]int, 1001)
 	for _, i := range arr1 {
-		counts[i-min]++
+		counts[i]++
 	}
 
 	// Get the elements from arr2 one by one.
 	res := make([]int, 0, len(arr1))
 	for _, i := range arr2 {
-		count := counts[i-min]
-		counts[i-min] = 0
+		count := counts[i]
+		counts[i] = 0
 		for j := 0; j < count; j++ {
 			res = append(res, i)
 		}
@@ -55,7 +48,7 @@ func sortByGivenIndex(arr1, arr2 []int) []int {
 	// Append the remaining numbers.
 	for i, count := range counts {
 		for j := 0; j < count; j++ {
-			res = append(res, i+min)
+			res = append(res, i)
 		}
 	}
 
