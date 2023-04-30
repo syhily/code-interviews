@@ -41,10 +41,24 @@ func findTheKth(k int, numbers ...int) int {
 		panic(fmt.Errorf("invalid k, it exceed the array length  %v", l))
 	}
 
-	return innerFindTheKth(numbers, 0, l-1, l-k)
+	des, start, end := l-k, 0, l-1
+	for {
+		pivot := partition(numbers, start, end)
+		if pivot == des {
+			return numbers[pivot]
+		} else if pivot < des {
+			start = pivot + 1
+		} else {
+			end = pivot - 1
+		}
+	}
 }
 
-func innerFindTheKth(numbers []int, start, end, des int) int {
+func partition(numbers []int, start, end int) int {
+	if start == end {
+		return start
+	}
+
 	// Use a random value as the comparator.
 	random, _ := rand.Int(rand.Reader, big.NewInt(int64(end-start+1)))
 	pivot := int(random.Int64()) + start
@@ -60,11 +74,5 @@ func innerFindTheKth(numbers []int, start, end, des int) int {
 		}
 	}
 
-	if pivot > des {
-		return innerFindTheKth(numbers, start, pivot-1, des)
-	} else if pivot < des {
-		return innerFindTheKth(numbers, pivot+1, end, des)
-	} else {
-		return numbers[pivot]
-	}
+	return pivot
 }
