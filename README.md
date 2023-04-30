@@ -17,10 +17,10 @@ You can clone this project and running all the tests locally.
 - [ ] [Question 5](chapter01/question5.go)
 </details>
 
-<details>
-<summary>Chapter 02</summary>
+<details open>
+<summary>Chapter 02 (WIP)</summary>
 
-- [ ] [Question 6](chapter02/question6.go)
+- [x] [Question 6](chapter02/question6.go)
 - [ ] [Question 7](chapter02/question7.go)
 - [ ] [Question 8](chapter02/question8.go)
 - [ ] [Question 9](chapter02/question9.go)
@@ -88,8 +88,8 @@ You can clone this project and running all the tests locally.
 - [x] [Question 46](chapter07/question46.go)
 </details>
 
-<details open>
-<summary>Chapter 08 (WIP)</summary>
+<details>
+<summary>Chapter 08</summary>
 
 - [ ] [Question 47](chapter08/question47.go)
 - [ ] [Question 48](chapter08/question48.go)
