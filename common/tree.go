@@ -1,4 +1,4 @@
-package chapter08
+package common
 
 type TreeNode struct {
 	value int
@@ -6,6 +6,6 @@ type TreeNode struct {
 	right *TreeNode
 }
 
-func newNode(value int) *TreeNode {
+func NewTreeNode(value int) *TreeNode {
 	return &TreeNode{value: value}
 }
