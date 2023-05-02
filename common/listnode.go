@@ -6,7 +6,7 @@ type ListNode struct {
 	Next  *ListNode
 }
 
-func New(nodes ...int) *ListNode {
+func NewListNode(nodes ...int) *ListNode {
 	l := &ListNode{Value: nodes[0]}
 
 	curr := l
@@ -46,7 +46,7 @@ func NewCircleNode(start int, nodes ...int) (l *ListNode, s *ListNode) {
 }
 
 func NewJoinNode(f, s, c []int) (fn *ListNode, sn *ListNode, cc *ListNode) {
-	cc = New(c...)
+	cc = NewListNode(c...)
 	var cf, cs *ListNode
 
 	for _, n := range f {

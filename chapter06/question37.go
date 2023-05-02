@@ -1,36 +1,38 @@
 package chapter06
 
+import "github.com/syhily/code-interviews/common"
+
 func asteroidCollision(asteroids ...int) []int {
-	s := newStack[int]()
+	s := common.NewStack[int]()
 
 	for _, as := range asteroids {
-		if s.empty() || as >= 0 {
-			s.push(as)
+		if s.Empty() || as >= 0 {
+			s.Push(as)
 			continue
 		}
 
 		for {
-			if s.empty() {
-				s.push(as)
+			if s.Empty() {
+				s.Push(as)
 				break
 			}
 
-			if head := s.peek(); head >= 0 {
+			if head := s.Peek(); head >= 0 {
 				if head > -as {
 					break
 				} else {
-					s.pop()
+					s.Pop()
 				}
 			} else {
-				s.push(as)
+				s.Push(as)
 				break
 			}
 		}
 	}
 
-	res := make([]int, s.size())
-	for i := s.size() - 1; !s.empty(); i-- {
-		res[i] = s.pop()
+	res := make([]int, s.Size())
+	for i := s.Size() - 1; !s.Empty(); i-- {
+		res[i] = s.Pop()
 	}
 
 	return res

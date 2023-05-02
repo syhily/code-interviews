@@ -2,6 +2,8 @@ package chapter06
 
 import (
 	"strconv"
+
+	"github.com/syhily/code-interviews/common"
 )
 
 var operations = map[string]func(int, int) int{
@@ -12,18 +14,18 @@ var operations = map[string]func(int, int) int{
 }
 
 func evalRPN(tokens ...string) int {
-	s := newStack[int]()
+	s := common.NewStack[int]()
 
 	for _, t := range tokens {
 		if operation, ok := operations[t]; ok {
-			r := s.pop()
-			l := s.pop()
-			s.push(operation(l, r))
+			r := s.Pop()
+			l := s.Pop()
+			s.Push(operation(l, r))
 		} else {
 			i, _ := strconv.Atoi(t)
-			s.push(i)
+			s.Push(i)
 		}
 	}
 
-	return s.pop()
+	return s.Pop()
 }

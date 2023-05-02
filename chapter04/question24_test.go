@@ -23,13 +23,13 @@ func Test_reverseListNode(t *testing.T) {
 		},
 		{
 			name: "Test for single list node",
-			args: args{l: common.New(1)},
-			want: common.New(1),
+			args: args{l: common.NewListNode(1)},
+			want: common.NewListNode(1),
 		},
 		{
 			name: "Test for 1, 2, 3, 4, 5, 6, 7",
-			args: args{l: common.New(1, 2, 3, 4, 5, 6, 7)},
-			want: common.New(7, 6, 5, 4, 3, 2, 1),
+			args: args{l: common.NewListNode(1, 2, 3, 4, 5, 6, 7)},
+			want: common.NewListNode(7, 6, 5, 4, 3, 2, 1),
 		},
 	}
 	for _, tt := range tests {

@@ -1,4 +1,4 @@
-package chapter06
+package common
 
 import (
 	"fmt"
@@ -8,11 +8,11 @@ var ErrNoElementInStack = fmt.Errorf("there is no elements in the stack")
 
 // Stack is a common interface for representing the FILO data structure.
 type Stack[V comparable] interface {
-	push(v V)
-	pop() V
-	peek() V
-	empty() bool
-	size() int
+	Push(v V)
+	Pop() V
+	Peek() V
+	Empty() bool
+	Size() int
 }
 
 type entry[V comparable] struct {
@@ -25,15 +25,15 @@ type stack[V comparable] struct {
 	counts int
 }
 
-func (s *stack[V]) empty() bool {
+func (s *stack[V]) Empty() bool {
 	return s.entry == nil
 }
 
-func (s *stack[V]) size() int {
+func (s *stack[V]) Size() int {
 	return s.counts
 }
 
-func (s *stack[V]) push(v V) {
+func (s *stack[V]) Push(v V) {
 	if s.entry == nil {
 		s.entry = &entry[V]{value: v}
 	} else {
@@ -44,7 +44,7 @@ func (s *stack[V]) push(v V) {
 	s.counts++
 }
 
-func (s *stack[V]) pop() V {
+func (s *stack[V]) Pop() V {
 	if s.entry == nil {
 		panic(ErrNoElementInStack)
 	}
@@ -55,7 +55,7 @@ func (s *stack[V]) pop() V {
 	return e.value
 }
 
-func (s *stack[V]) peek() V {
+func (s *stack[V]) Peek() V {
 	if s.entry == nil {
 		panic(ErrNoElementInStack)
 	}
@@ -63,6 +63,6 @@ func (s *stack[V]) peek() V {
 	return s.entry.value
 }
 
-func newStack[V comparable]() Stack[V] {
+func NewStack[V comparable]() Stack[V] {
 	return &stack[V]{}
 }

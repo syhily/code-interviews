@@ -42,8 +42,8 @@ func Test_reclusiveMergeSortList(t *testing.T) {
 	}{
 		{
 			name: "merge sort the link list",
-			args: args{node: common.New(6, 5, 4, 3, 2, 1)},
-			want: common.New(1, 2, 3, 4, 5, 6),
+			args: args{node: common.NewListNode(6, 5, 4, 3, 2, 1)},
+			want: common.NewListNode(1, 2, 3, 4, 5, 6),
 		},
 	}
 	for _, tt := range tests {
@@ -66,8 +66,8 @@ func Test_mergeSortList(t *testing.T) {
 	}{
 		{
 			name: "merge sort the link list",
-			args: args{node: common.New(4, 1, 5, 6, 2, 7, 8, 3)},
-			want: common.New(1, 2, 3, 4, 5, 6, 7, 8),
+			args: args{node: common.NewListNode(4, 1, 5, 6, 2, 7, 8, 3)},
+			want: common.NewListNode(1, 2, 3, 4, 5, 6, 7, 8),
 		},
 	}
 	for _, tt := range tests {

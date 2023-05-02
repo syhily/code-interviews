@@ -8,7 +8,7 @@ import (
 )
 
 func Test_findIntersectionNode(t *testing.T) {
-	s := common.New(1, 3, 5, 7, 9)
+	s := common.NewListNode(1, 3, 5, 7, 9)
 	l1, l2, l3 := common.NewJoinNode([]int{1, 2, 3, 4}, []int{5, 6, 7, 8, 9, 10}, []int{11, 12, 13, 14, 15, 16})
 
 	type args struct {
@@ -22,7 +22,7 @@ func Test_findIntersectionNode(t *testing.T) {
 	}{
 		{
 			name: "Two different list node",
-			args: args{f: common.New(1, 2, 3, 4, 5, 6), s: common.New(1, 2, 3, 4, 5, 6, 7)},
+			args: args{f: common.NewListNode(1, 2, 3, 4, 5, 6), s: common.NewListNode(1, 2, 3, 4, 5, 6, 7)},
 			want: nil,
 		},
 		{

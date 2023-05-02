@@ -1,25 +1,27 @@
 package chapter06
 
+import "github.com/syhily/code-interviews/common"
+
 func dailyTemperatures(temperatures ...int) []int {
-	s := newStack[int]()
+	s := common.NewStack[int]()
 	res := make([]int, len(temperatures))
 
 	for i, temperature := range temperatures {
-		if s.empty() {
-			s.push(i)
+		if s.Empty() {
+			s.Push(i)
 			continue
 		}
 
-		for !s.empty() && temperatures[s.peek()] < temperature {
-			idx := s.pop()
+		for !s.Empty() && temperatures[s.Peek()] < temperature {
+			idx := s.Pop()
 			res[idx] = i - idx
 		}
 
-		s.push(i)
+		s.Push(i)
 	}
 
-	for !s.empty() {
-		res[s.pop()] = 0
+	for !s.Empty() {
+		res[s.Pop()] = 0
 	}
 
 	return res

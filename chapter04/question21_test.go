@@ -20,26 +20,26 @@ func Test_removeNthFromTheEnd(t *testing.T) {
 		{
 			name: "Delete first node",
 			args: args{
-				l: common.New(1, 2, 3, 4, 5, 6),
+				l: common.NewListNode(1, 2, 3, 4, 5, 6),
 				n: 6,
 			},
-			want: common.New(2, 3, 4, 5, 6),
+			want: common.NewListNode(2, 3, 4, 5, 6),
 		},
 		{
 			name: "Delete last node",
 			args: args{
-				l: common.New(1, 2, 3, 4, 5, 6),
+				l: common.NewListNode(1, 2, 3, 4, 5, 6),
 				n: 1,
 			},
-			want: common.New(1, 2, 3, 4, 5),
+			want: common.NewListNode(1, 2, 3, 4, 5),
 		},
 		{
 			name: "Delete nth node",
 			args: args{
-				l: common.New(1, 2, 3, 4, 5, 6),
+				l: common.NewListNode(1, 2, 3, 4, 5, 6),
 				n: 3,
 			},
-			want: common.New(1, 2, 3, 5, 6),
+			want: common.NewListNode(1, 2, 3, 5, 6),
 		},
 	}
 	for _, tt := range tests {

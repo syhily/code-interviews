@@ -21,7 +21,7 @@ func Test_findStartNodeInCircle(t *testing.T) {
 	}{
 		{
 			name: "No start node in pure list node",
-			args: args{l: common.New(1, 3, 5, 6, 7)},
+			args: args{l: common.NewListNode(1, 3, 5, 6, 7)},
 			want: nil,
 		},
 		{
