@@ -1,4 +1,4 @@
-package chapter07
+package common
 
 import "fmt"
 
@@ -6,26 +6,26 @@ var ErrNoElementInQueue = fmt.Errorf("there is no elements in the queue")
 
 // Queue is a common interface for representing the FIFO data structure.
 type Queue[V comparable] interface {
-	add(v V)
-	remove() V
-	element() V
-	empty() bool
-	size() int
+	Add(v V)
+	Remove() V
+	Element() V
+	Empty() bool
+	Size() int
 }
 
-type entry[V comparable] struct {
+type element[V comparable] struct {
 	value V
-	next  *entry[V]
+	next  *element[V]
 }
 
 type queue[V comparable] struct {
-	head   *entry[V]
-	tail   *entry[V]
+	head   *element[V]
+	tail   *element[V]
 	counts int
 }
 
-func (q *queue[V]) add(v V) {
-	e := &entry[V]{value: v}
+func (q *queue[V]) Add(v V) {
+	e := &element[V]{value: v}
 	if q.head == nil {
 		q.head = e
 		q.tail = q.head
@@ -36,7 +36,7 @@ func (q *queue[V]) add(v V) {
 	q.counts++
 }
 
-func (q *queue[V]) remove() V {
+func (q *queue[V]) Remove() V {
 	head := q.head
 	if head == nil {
 		panic(ErrNoElementInQueue)
@@ -46,7 +46,7 @@ func (q *queue[V]) remove() V {
 	return head.value
 }
 
-func (q *queue[V]) element() V {
+func (q *queue[V]) Element() V {
 	head := q.head
 	if head == nil {
 		panic(ErrNoElementInQueue)
@@ -54,14 +54,14 @@ func (q *queue[V]) element() V {
 	return head.value
 }
 
-func (q *queue[V]) empty() bool {
+func (q *queue[V]) Empty() bool {
 	return q.counts == 0
 }
 
-func (q *queue[V]) size() int {
+func (q *queue[V]) Size() int {
 	return q.counts
 }
 
-func newQueue[V comparable]() Queue[V] {
+func NewQueue[V comparable]() Queue[V] {
 	return &queue[V]{}
 }

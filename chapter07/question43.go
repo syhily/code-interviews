@@ -1,5 +1,7 @@
 package chapter07
 
+import "github.com/syhily/code-interviews/common"
+
 type TreeNode struct {
 	value int
 	left  *TreeNode
@@ -13,20 +15,20 @@ type CBTInserter interface {
 
 type cbtInserter struct {
 	tree  *TreeNode
-	queue Queue[*TreeNode]
+	queue common.Queue[*TreeNode]
 }
 
 func (c *cbtInserter) insert(value int) *TreeNode {
-	parent := c.queue.element()
+	parent := c.queue.Element()
 	node := &TreeNode{value: value}
 
 	if parent.left == nil {
 		parent.left = node
-		c.queue.add(node)
+		c.queue.Add(node)
 	} else {
 		parent.right = node
-		c.queue.add(node)
-		c.queue.remove()
+		c.queue.Add(node)
+		c.queue.Remove()
 	}
 
 	return parent
@@ -37,18 +39,18 @@ func (c *cbtInserter) root() *TreeNode {
 }
 
 func newCBTInserter(node *TreeNode) CBTInserter {
-	q := newQueue[*TreeNode]()
-	q.add(node)
+	q := common.NewQueue[*TreeNode]()
+	q.Add(node)
 
 	for {
-		n := q.element()
+		n := q.Element()
 		if n.left == nil || n.right == nil {
 			break
 		}
 
-		q.add(n.left)
-		q.add(n.right)
-		q.remove()
+		q.Add(n.left)
+		q.Add(n.right)
+		q.Remove()
 	}
 
 	return &cbtInserter{

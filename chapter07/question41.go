@@ -1,5 +1,7 @@
 package chapter07
 
+import "github.com/syhily/code-interviews/common"
+
 type MovingAverage interface {
 	next(val int) float64
 }
@@ -34,25 +36,25 @@ func newMovingAverageSlice(size int) MovingAverage {
 }
 
 type movingAverageQueue struct {
-	queue Queue[int]
+	queue common.Queue[int]
 	sum   int
 	size  int
 }
 
 func (m *movingAverageQueue) next(val int) float64 {
-	if m.queue.size() == m.size {
-		m.sum -= m.queue.remove()
+	if m.queue.Size() == m.size {
+		m.sum -= m.queue.Remove()
 	}
 
-	m.queue.add(val)
+	m.queue.Add(val)
 	m.sum += val
 
-	return float64(m.sum) / float64(m.queue.size())
+	return float64(m.sum) / float64(m.queue.Size())
 }
 
 func newMovingAverageQueue(size int) MovingAverage {
 	return &movingAverageQueue{
-		queue: newQueue[int](),
+		queue: common.NewQueue[int](),
 		size:  size,
 	}
 }

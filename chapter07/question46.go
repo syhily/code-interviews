@@ -2,6 +2,8 @@ package chapter07
 
 import (
 	"math"
+
+	"github.com/syhily/code-interviews/common"
 )
 
 func rightViewOfTreeNode(tree *TreeNode) []int {
@@ -9,29 +11,29 @@ func rightViewOfTreeNode(tree *TreeNode) []int {
 		return nil
 	}
 
-	q := newQueue[*TreeNode]()
-	q.add(tree)
-	q.add(nil)
+	q := common.NewQueue[*TreeNode]()
+	q.Add(tree)
+	q.Add(nil)
 
 	var res []int
 	curr := math.MinInt
 
-	for !q.empty() {
-		node := q.remove()
+	for !q.Empty() {
+		node := q.Remove()
 
 		if node == nil {
 			res = append(res, curr)
 			curr = math.MinInt
-			if !q.empty() {
-				q.add(nil)
+			if !q.Empty() {
+				q.Add(nil)
 			}
 			continue
 		}
 		if node.left != nil {
-			q.add(node.left)
+			q.Add(node.left)
 		}
 		if node.right != nil {
-			q.add(node.right)
+			q.Add(node.right)
 		}
 
 		curr = node.value

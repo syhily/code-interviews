@@ -1,31 +1,33 @@
 package chapter07
 
+import "github.com/syhily/code-interviews/common"
+
 type RecentAverage interface {
 	ping(time int) int
 }
 
 type recentAverage struct {
-	queue     Queue[int]
+	queue     common.Queue[int]
 	timeRange int
 }
 
 func newRecentAverage(r int) RecentAverage {
 	return &recentAverage{
-		queue:     newQueue[int](),
+		queue:     common.NewQueue[int](),
 		timeRange: r,
 	}
 }
 
 func (r *recentAverage) ping(time int) int {
-	if r.queue.empty() {
-		r.queue.add(time)
+	if r.queue.Empty() {
+		r.queue.Add(time)
 		return 1
 	}
 
-	for !r.queue.empty() && r.queue.element()+r.timeRange < time {
-		r.queue.remove()
+	for !r.queue.Empty() && r.queue.Element()+r.timeRange < time {
+		r.queue.Remove()
 	}
-	r.queue.add(time)
+	r.queue.Add(time)
 
-	return r.queue.size()
+	return r.queue.Size()
 }
