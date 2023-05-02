@@ -135,14 +135,14 @@ You can clone this project and running all the tests locally.
 - [ ] [Question 73](chapter11/question73.go)
 </details>
 
-<details open>
-<summary>Chapter 12 (WIP)</summary>
+<details>
+<summary><del>Chapter 12</del></summary>
 
 - [x] [Question 74](chapter12/question74.go)
 - [x] [Question 75](chapter12/question75.go)
 - [x] [Question 76](chapter12/question76.go)
 - [x] [Question 77](chapter12/question77.go)
-- [ ] [Question 78](chapter12/question78.go)
+- [x] [Question 78](chapter12/question78.go)
 </details>
 
 <details>
