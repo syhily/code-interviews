@@ -1,19 +1,21 @@
 package chapter04
 
-func removeNthFromTheEnd(l *ListNode, n int) *ListNode {
-	dummy := &ListNode{next: l}
+import "github.com/syhily/code-interviews/common"
+
+func removeNthFromTheEnd(l *common.ListNode, n int) *common.ListNode {
+	dummy := &common.ListNode{Next: l}
 
 	first := l
 	for i := 0; i < n; i++ {
-		first = first.next
+		first = first.Next
 	}
 
 	second := dummy
 	for first != nil {
-		first = first.next
-		second = second.next
+		first = first.Next
+		second = second.Next
 	}
-	second.next = second.next.next
+	second.Next = second.Next.Next
 
-	return dummy.next
+	return dummy.Next
 }

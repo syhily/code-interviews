@@ -3,41 +3,43 @@ package chapter04
 import (
 	"reflect"
 	"testing"
+
+	"github.com/syhily/code-interviews/common"
 )
 
 func Test_removeNthFromTheEnd(t *testing.T) {
 	type args struct {
-		l *ListNode
+		l *common.ListNode
 		n int
 	}
 	tests := []struct {
 		name string
 		args args
-		want *ListNode
+		want *common.ListNode
 	}{
 		{
 			name: "Delete first node",
 			args: args{
-				l: New(1, 2, 3, 4, 5, 6),
+				l: common.New(1, 2, 3, 4, 5, 6),
 				n: 6,
 			},
-			want: New(2, 3, 4, 5, 6),
+			want: common.New(2, 3, 4, 5, 6),
 		},
 		{
 			name: "Delete last node",
 			args: args{
-				l: New(1, 2, 3, 4, 5, 6),
+				l: common.New(1, 2, 3, 4, 5, 6),
 				n: 1,
 			},
-			want: New(1, 2, 3, 4, 5),
+			want: common.New(1, 2, 3, 4, 5),
 		},
 		{
 			name: "Delete nth node",
 			args: args{
-				l: New(1, 2, 3, 4, 5, 6),
+				l: common.New(1, 2, 3, 4, 5, 6),
 				n: 3,
 			},
-			want: New(1, 2, 3, 5, 6),
+			want: common.New(1, 2, 3, 5, 6),
 		},
 	}
 	for _, tt := range tests {

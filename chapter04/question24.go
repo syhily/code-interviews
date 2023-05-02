@@ -1,12 +1,14 @@
 package chapter04
 
-func reverseListNode(l *ListNode) *ListNode {
+import "github.com/syhily/code-interviews/common"
+
+func reverseListNode(l *common.ListNode) *common.ListNode {
 	c := l
-	var prev *ListNode
+	var prev *common.ListNode
 
 	for c != nil {
-		next := c.next
-		c.next = prev
+		next := c.Next
+		c.Next = prev
 		prev = c
 		c = next
 	}

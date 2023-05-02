@@ -3,24 +3,26 @@ package chapter04
 import (
 	"reflect"
 	"testing"
+
+	"github.com/syhily/code-interviews/common"
 )
 
 func Test_insertNodeIntoCircle(t *testing.T) {
-	n1, _ := NewCircleNode(1, 1)
-	n2, _ := NewCircleNode(1, 1, 2)
-	n3, _ := NewCircleNode(1, 1, 2, 3, 4, 5, 6)
-	n4, _ := NewCircleNode(1, 1, 2, 3, 4, 5, 6, 7)
-	n5, _ := NewCircleNode(1, 1, 2, 3, 4, 5, 8, 9)
-	n6, _ := NewCircleNode(1, 1, 2, 3, 4, 5, 7, 8, 9)
+	n1, _ := common.NewCircleNode(1, 1)
+	n2, _ := common.NewCircleNode(1, 1, 2)
+	n3, _ := common.NewCircleNode(1, 1, 2, 3, 4, 5, 6)
+	n4, _ := common.NewCircleNode(1, 1, 2, 3, 4, 5, 6, 7)
+	n5, _ := common.NewCircleNode(1, 1, 2, 3, 4, 5, 8, 9)
+	n6, _ := common.NewCircleNode(1, 1, 2, 3, 4, 5, 7, 8, 9)
 
 	type args struct {
-		node  *ListNode
+		node  *common.ListNode
 		value int
 	}
 	tests := []struct {
 		name string
 		args args
-		want *ListNode
+		want *common.ListNode
 	}{
 		{
 			name: "Insert the value into nil list node",

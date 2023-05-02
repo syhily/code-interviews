@@ -1,39 +1,41 @@
 package chapter04
 
-func isPalindromeListNode(l *ListNode) bool {
-	if l == nil || l.next == nil {
+import "github.com/syhily/code-interviews/common"
+
+func isPalindromeListNode(l *common.ListNode) bool {
+	if l == nil || l.Next == nil {
 		return true
 	}
 
 	fast, slow := l, l
-	var prev, right *ListNode
+	var prev, right *common.ListNode
 
 	for fast != nil {
-		if fast.next != nil {
-			fast = fast.next
+		if fast.Next != nil {
+			fast = fast.Next
 		} else {
 			break
 		}
 		prev = slow
-		slow = slow.next
-		if fast.next != nil {
-			fast = fast.next
-			right = slow.next
+		slow = slow.Next
+		if fast.Next != nil {
+			fast = fast.Next
+			right = slow.Next
 		} else {
 			right = slow
 		}
 	}
 
-	prev.next = nil
+	prev.Next = nil
 	left := reverseListNode(l)
 
 	for left != nil {
-		if left.value != right.value {
+		if left.Value != right.Value {
 			return false
 		}
 
-		left = left.next
-		right = right.next
+		left = left.Next
+		right = right.Next
 	}
 
 	return true

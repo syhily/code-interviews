@@ -1,38 +1,40 @@
 package chapter04
 
-func reorderListNode(node *ListNode) *ListNode {
+import "github.com/syhily/code-interviews/common"
+
+func reorderListNode(node *common.ListNode) *common.ListNode {
 	if node == nil {
 		return nil
 	}
 
 	fast, slow := node, node
 	for fast != nil {
-		fast = fast.next
+		fast = fast.Next
 		if fast != nil {
-			fast = fast.next
+			fast = fast.Next
 		} else {
 			break
 		}
 
-		slow = slow.next
+		slow = slow.Next
 	}
 
-	r, first, second := &ListNode{}, node, slow.next
-	slow.next = nil
+	r, first, second := &common.ListNode{}, node, slow.Next
+	slow.Next = nil
 	second = reverseListNode(second)
 
 	t := r
 	for first != nil {
-		t.next = first
-		t = t.next
-		first = first.next
+		t.Next = first
+		t = t.Next
+		first = first.Next
 
 		if second != nil {
-			t.next = second
-			t = t.next
-			second = second.next
+			t.Next = second
+			t = t.Next
+			second = second.Next
 		}
 	}
 
-	return r.next
+	return r.Next
 }

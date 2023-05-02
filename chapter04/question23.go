@@ -1,6 +1,8 @@
 package chapter04
 
-func findIntersectionNode(f *ListNode, s *ListNode) *ListNode {
+import "github.com/syhily/code-interviews/common"
+
+func findIntersectionNode(f *common.ListNode, s *common.ListNode) *common.ListNode {
 	fl, sl := lenOfListNode(f), lenOfListNode(s)
 
 	if fl > sl {
@@ -10,18 +12,18 @@ func findIntersectionNode(f *ListNode, s *ListNode) *ListNode {
 	}
 }
 
-func lenOfListNode(l *ListNode) int {
+func lenOfListNode(l *common.ListNode) int {
 	var fl int
 	for l != nil {
 		fl++
-		l = l.next
+		l = l.Next
 	}
 	return fl
 }
 
-func innerFindTheIntersectionNode(l *ListNode, s *ListNode, jump int) *ListNode {
+func innerFindTheIntersectionNode(l *common.ListNode, s *common.ListNode, jump int) *common.ListNode {
 	for i := 0; i < jump; i++ {
-		l = l.next
+		l = l.Next
 	}
 
 	for l != nil && s != nil {
@@ -29,8 +31,8 @@ func innerFindTheIntersectionNode(l *ListNode, s *ListNode, jump int) *ListNode 
 			return l
 		}
 
-		l = l.next
-		s = s.next
+		l = l.Next
+		s = s.Next
 	}
 
 	// Couldn't find the common node.

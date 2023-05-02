@@ -1,26 +1,28 @@
 package chapter04
 
-func insertNodeIntoCircle(node *ListNode, value int) *ListNode {
+import "github.com/syhily/code-interviews/common"
+
+func insertNodeIntoCircle(node *common.ListNode, value int) *common.ListNode {
 	if node == nil {
-		node = &ListNode{value: value}
-		node.next = node
+		node = &common.ListNode{Value: value}
+		node.Next = node
 		return node
 	}
 
-	start, max := node.next, node
-	n := &ListNode{value: value}
+	start, max := node.Next, node
+	n := &common.ListNode{Value: value}
 
 	for start != node {
-		if start.value > max.value {
+		if start.Value > max.Value {
 			max = start
 		}
 
-		if value > start.value && value < start.next.value {
+		if value > start.Value && value < start.Next.Value {
 			insertAfterNode(start, n)
 			return node
 		}
 
-		start = start.next
+		start = start.Next
 	}
 
 	// Couldn't find the right position, insert after the max node.
@@ -29,8 +31,8 @@ func insertNodeIntoCircle(node *ListNode, value int) *ListNode {
 	return node
 }
 
-func insertAfterNode(start, node *ListNode) {
-	next := start.next
-	start.next = node
-	node.next = next
+func insertAfterNode(start, node *common.ListNode) {
+	next := start.Next
+	start.Next = node
+	node.Next = next
 }

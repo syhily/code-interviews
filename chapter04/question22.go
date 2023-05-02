@@ -1,25 +1,27 @@
 package chapter04
 
+import "github.com/syhily/code-interviews/common"
+
 // detectCircleInListNode will return a node in circle, else will return nil.
-func detectCircleInListNode(l *ListNode) *ListNode {
+func detectCircleInListNode(l *common.ListNode) *common.ListNode {
 	// Guard logic, in case of the empty or single list node.
-	if l == nil || l.next == nil {
+	if l == nil || l.Next == nil {
 		return nil
 	}
 
 	fast, slow := l, l
 
 	for fast != nil {
-		fast = fast.next
+		fast = fast.Next
 
 		// In case of there is no circle and the fast pointer hit the end.
 		if fast != nil {
-			fast = fast.next
+			fast = fast.Next
 		} else {
 			return nil
 		}
 
-		slow = slow.next
+		slow = slow.Next
 
 		if slow == fast {
 			break
@@ -35,7 +37,7 @@ func detectCircleInListNode(l *ListNode) *ListNode {
 }
 
 // findStartNodeInCircle will return a start node of a circle in list node.
-func findStartNodeInCircle(l *ListNode) *ListNode {
+func findStartNodeInCircle(l *common.ListNode) *common.ListNode {
 	n := detectCircleInListNode(l)
 	if n == nil {
 		return nil
@@ -47,7 +49,7 @@ func findStartNodeInCircle(l *ListNode) *ListNode {
 			return s
 		}
 
-		s = s.next
-		n = n.next
+		s = s.Next
+		n = n.Next
 	}
 }

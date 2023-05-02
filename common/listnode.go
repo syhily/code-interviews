@@ -1,18 +1,18 @@
-package chapter04
+package common
 
 // ListNode is used as the linked list. This struct is used in chapter 4.
 type ListNode struct {
-	value int
-	next  *ListNode
+	Value int
+	Next  *ListNode
 }
 
 func New(nodes ...int) *ListNode {
-	l := &ListNode{value: nodes[0]}
+	l := &ListNode{Value: nodes[0]}
 
 	curr := l
 	for _, node := range nodes[1:] {
-		curr.next = &ListNode{value: node}
-		curr = curr.next
+		curr.Next = &ListNode{Value: node}
+		curr = curr.Next
 	}
 
 	return l
@@ -23,7 +23,7 @@ func NewCircleNode(start int, nodes ...int) (l *ListNode, s *ListNode) {
 
 	for i, node := range nodes {
 		if i == 0 {
-			l = &ListNode{value: node}
+			l = &ListNode{Value: node}
 			curr = l
 			if node == start {
 				s = l
@@ -31,15 +31,15 @@ func NewCircleNode(start int, nodes ...int) (l *ListNode, s *ListNode) {
 			continue
 		}
 
-		curr.next = &ListNode{value: node}
-		curr = curr.next
+		curr.Next = &ListNode{Value: node}
+		curr = curr.Next
 		if start == node {
 			s = curr
 		}
 	}
 
 	if s != nil {
-		curr.next = s
+		curr.Next = s
 	}
 
 	return
@@ -51,56 +51,56 @@ func NewJoinNode(f, s, c []int) (fn *ListNode, sn *ListNode, cc *ListNode) {
 
 	for _, n := range f {
 		if fn == nil {
-			fn = &ListNode{value: n}
+			fn = &ListNode{Value: n}
 			cf = fn
 			continue
 		}
 
-		cf.next = &ListNode{value: n}
-		cf = cf.next
+		cf.Next = &ListNode{Value: n}
+		cf = cf.Next
 	}
 
 	for _, n := range s {
 		if sn == nil {
-			sn = &ListNode{value: n}
+			sn = &ListNode{Value: n}
 			cs = sn
 			continue
 		}
 
-		cs.next = &ListNode{value: n}
-		cs = cs.next
+		cs.Next = &ListNode{Value: n}
+		cs = cs.Next
 	}
 
-	cf.next = cc
-	cs.next = cc
+	cf.Next = cc
+	cs.Next = cc
 
 	return
 }
 
 func appendNode(l *ListNode, value int) *ListNode {
 	if l == nil {
-		return &ListNode{value: value}
+		return &ListNode{Value: value}
 	}
 
 	c := l
-	for c.next != nil {
-		c = c.next
+	for c.Next != nil {
+		c = c.Next
 	}
-	c.next = &ListNode{value: value}
+	c.Next = &ListNode{Value: value}
 
 	return l
 }
 
 func dummyAppendNode(l *ListNode, value int) *ListNode {
-	dummy := &ListNode{next: l}
+	dummy := &ListNode{Next: l}
 
 	tail := dummy
-	for tail.next != nil {
-		tail = tail.next
+	for tail.Next != nil {
+		tail = tail.Next
 	}
-	tail.next = &ListNode{value: value}
+	tail.Next = &ListNode{Value: value}
 
-	return dummy.next
+	return dummy.Next
 }
 
 func deleteNode(l *ListNode, value int) *ListNode {
@@ -108,14 +108,14 @@ func deleteNode(l *ListNode, value int) *ListNode {
 		return nil
 	}
 
-	if l.value == value {
-		return l.next
+	if l.Value == value {
+		return l.Next
 	}
 
 	curr := l
-	for curr.next != nil {
-		if curr.next.value == value {
-			curr.next = curr.next.next
+	for curr.Next != nil {
+		if curr.Next.Value == value {
+			curr.Next = curr.Next.Next
 			break
 		}
 	}
@@ -124,15 +124,15 @@ func deleteNode(l *ListNode, value int) *ListNode {
 }
 
 func dummyDeleteNode(l *ListNode, value int) *ListNode {
-	dummy := &ListNode{next: l}
+	dummy := &ListNode{Next: l}
 
 	curr := dummy
-	for curr.next != nil {
-		if curr.next.value == value {
-			curr.next = curr.next.next
+	for curr.Next != nil {
+		if curr.Next.Value == value {
+			curr.Next = curr.Next.Next
 			break
 		}
 	}
 
-	return dummy.next
+	return dummy.Next
 }

@@ -3,23 +3,25 @@ package chapter04
 import (
 	"reflect"
 	"testing"
+
+	"github.com/syhily/code-interviews/common"
 )
 
 func Test_findStartNodeInCircle(t *testing.T) {
-	l1, s1 := NewCircleNode(4, 1, 2, 3, 4, 5, 6)
-	l2, s2 := NewCircleNode(1, 1, 2, 3, 4, 5, 6)
+	l1, s1 := common.NewCircleNode(4, 1, 2, 3, 4, 5, 6)
+	l2, s2 := common.NewCircleNode(1, 1, 2, 3, 4, 5, 6)
 
 	type args struct {
-		l *ListNode
+		l *common.ListNode
 	}
 	tests := []struct {
 		name string
 		args args
-		want *ListNode
+		want *common.ListNode
 	}{
 		{
 			name: "No start node in pure list node",
-			args: args{l: New(1, 3, 5, 6, 7)},
+			args: args{l: common.New(1, 3, 5, 6, 7)},
 			want: nil,
 		},
 		{
