@@ -17,8 +17,8 @@ You can clone this project and running all the tests locally.
 - [ ] [Question 5](chapter01/question5.go)
 </details>
 
-<details open>
-<summary>Chapter 02 (WIP)</summary>
+<details>
+<summary><del>Chapter 02</del></summary>
 
 - [x] [Question 6](chapter02/question6.go)
 - [x] [Question 7](chapter02/question7.go)
@@ -27,7 +27,7 @@ You can clone this project and running all the tests locally.
 - [x] [Question 10](chapter02/question10.go)
 - [x] [Question 11](chapter02/question11.go)
 - [x] [Question 12](chapter02/question12.go)
-- [ ] [Question 13](chapter02/question13.go)
+- [x] [Question 13](chapter02/question13.go)
 </details>
 
 <details>
@@ -88,8 +88,8 @@ You can clone this project and running all the tests locally.
 - [x] [Question 46](chapter07/question46.go)
 </details>
 
-<details>
-<summary>Chapter 08</summary>
+<details open>
+<summary>Chapter 08 (WIP)</summary>
 
 - [ ] [Question 47](chapter08/question47.go)
 - [ ] [Question 48](chapter08/question48.go)
