@@ -25,7 +25,7 @@ You can clone this project and running all the tests locally.
 - [x] [Question 8](chapter02/question8.go)
 - [x] [Question 9](chapter02/question9.go)
 - [x] [Question 10](chapter02/question10.go)
-- [ ] [Question 11](chapter02/question11.go)
+- [x] [Question 11](chapter02/question11.go)
 - [ ] [Question 12](chapter02/question12.go)
 - [ ] [Question 13](chapter02/question13.go)
 </details>
