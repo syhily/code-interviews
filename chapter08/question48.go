@@ -12,18 +12,22 @@ const (
 	nilPlacerHolder = "#"
 )
 
-func serializeTreeNode(node *common.TreeNode[int]) string {
-	return serialize(node, strconv.Itoa)
-}
-
-func deserializeTreeNode(text string) *common.TreeNode[int] {
-	return deserialize(text, func(s string) int {
+var (
+	atoi = func(s string) int {
 		r, err := strconv.Atoi(s)
 		if err != nil {
 			panic(err)
 		}
 		return r
-	})
+	}
+)
+
+func serializeTreeNode(node *common.TreeNode[int]) string {
+	return serialize(node, strconv.Itoa)
+}
+
+func deserializeTreeNode(text string) *common.TreeNode[int] {
+	return deserialize(text, atoi)
 }
 
 func serialize[T comparable](node *common.TreeNode[T], fn func(T) string) string {
@@ -35,23 +39,23 @@ func serialize[T comparable](node *common.TreeNode[T], fn func(T) string) string
 }
 
 func deserialize[T comparable](text string, fn func(string) T) *common.TreeNode[T] {
-	nodes := strings.Split(text, delimiter)
-	tree, _ := innerDeserialize(nodes, 0, fn)
-
-	return tree
+	nodes, start := strings.Split(text, delimiter), 0
+	return innerDeserialize(nodes, &start, fn)
 }
 
-func innerDeserialize[T comparable](nodes []string, start int, fn func(string) T) (*common.TreeNode[T], int) {
+func innerDeserialize[T comparable](nodes []string, start *int, fn func(string) T) *common.TreeNode[T] {
 	var node *common.TreeNode[T]
+	text := nodes[*start]
+	*start++
 
-	if nodes[start] == nilPlacerHolder {
-		return nil, start + 1
+	if text == nilPlacerHolder {
+		return nil
 	} else {
-		node = &common.TreeNode[T]{Value: fn(nodes[start])}
+		node = &common.TreeNode[T]{Value: fn(text)}
 	}
 
-	node.Left, start = innerDeserialize(nodes, start+1, fn)
-	node.Right, start = innerDeserialize(nodes, start, fn)
+	node.Left = innerDeserialize(nodes, start, fn)
+	node.Right = innerDeserialize(nodes, start, fn)
 
-	return node, start
+	return node
 }
