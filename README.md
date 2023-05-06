@@ -92,7 +92,7 @@ You can clone this project and running all the tests locally.
 <summary>Chapter 08 (WIP)</summary>
 
 - [x] [Question 47](chapter08/question47.go)
-- [ ] [Question 48](chapter08/question48.go)
+- [x] [Question 48](chapter08/question48.go)
 - [ ] [Question 49](chapter08/question49.go)
 - [ ] [Question 50](chapter08/question50.go)
 - [ ] [Question 51](chapter08/question51.go)
