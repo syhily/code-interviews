@@ -8,7 +8,7 @@ type (
 	}
 
 	node struct {
-		word     bool
+		isWord   bool
 		children [26]*node
 	}
 
@@ -32,7 +32,7 @@ func (t *trie) insert(word string) {
 		}
 		curr = n
 	}
-	curr.word = true
+	curr.isWord = true
 }
 
 func (t *trie) search(word string) bool {
@@ -43,7 +43,7 @@ func (t *trie) search(word string) bool {
 			return false
 		}
 	}
-	return curr.word
+	return curr.isWord
 }
 
 func (t *trie) startWith(prefix string) bool {

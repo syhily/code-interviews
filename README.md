@@ -117,7 +117,7 @@ You can clone this project and running all the tests locally.
 <summary>Chapter 10 (WIP)</summary>
 
 - [x] [Question 62](chapter10/question62.go)
-- [ ] [Question 63](chapter10/question63.go)
+- [x] [Question 63](chapter10/question63.go)
 - [ ] [Question 64](chapter10/question64.go)
 - [ ] [Question 65](chapter10/question65.go)
 - [ ] [Question 66](chapter10/question66.go)
