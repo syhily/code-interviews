@@ -119,7 +119,7 @@ You can clone this project and running all the tests locally.
 - [x] [Question 62](chapter10/question62.go)
 - [x] [Question 63](chapter10/question63.go)
 - [x] [Question 64](chapter10/question64.go)
-- [ ] [Question 65](chapter10/question65.go)
+- [x] [Question 65](chapter10/question65.go)
 - [ ] [Question 66](chapter10/question66.go)
 - [ ] [Question 67](chapter10/question67.go)
 </details>
